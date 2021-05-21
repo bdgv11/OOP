@@ -1,9 +1,12 @@
 package com.company;
 
+import com.ucreativa.familia.Bryan;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        System.out.println("Hola clase de Java..");
+
+        Bryan br = new Bryan();
+
     }
 }
