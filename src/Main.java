@@ -1,5 +1,3 @@
-package com.company;
-
 import com.ucreativa.familia.Bryan;
 
 public class Main {
