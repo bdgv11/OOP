@@ -7,5 +7,12 @@ public class Main {
 
         Bryan br = new Bryan();
         Omar padre = new Omar("Hola soy el papa de Bryan jaja");
+
+        padre.setAge();
+
+        int edad = padre.getAge();
+
+        System.out.println("La edad de mi padre es: " + edad);
+
     }
 }
