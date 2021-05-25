@@ -7,9 +7,13 @@ public class Omar {
 
     public Omar(String saludo){
         this.age = 58;
-        this.hobby = "sudoku";
+        this.hobby = "hacer sudoku";
 
         System.out.println("Este es el saludo: " + saludo);
+    }
+
+    public String getHobby(){
+        return this.hobby;
     }
 
     public int getAge(){

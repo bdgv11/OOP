@@ -12,7 +12,7 @@ public class Main {
 
         int edad = padre.getAge();
 
-        System.out.println("La edad de mi padre es: " + edad);
+        System.out.println("La edad de mi padre es: " + edad + " y su hobby es: " + padre.getHobby());
 
     }
 }
