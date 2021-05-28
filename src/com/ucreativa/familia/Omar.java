@@ -9,7 +9,7 @@ public class Omar {
         this.age = 58;
         this.hobby = "hacer sudoku";
 
-        System.out.println("Este es el saludo: " + saludo);
+        System.out.println("Este es el saludo de la clase padre Omar: " + saludo);
     }
 
     public String getHobby(){
