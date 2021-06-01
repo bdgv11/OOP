@@ -1,3 +1,5 @@
+package com.ucreativa.familia;
+
 import com.ucreativa.vacunacion.entities.Amigo;
 import com.ucreativa.vacunacion.entities.BitacoraVacuna;
 import com.ucreativa.vacunacion.entities.Familiar;
