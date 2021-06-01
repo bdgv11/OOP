@@ -1,16 +1,20 @@
-import com.ucreativa.familia.Bryan;
-import com.ucreativa.familia.Omar;
+import com.ucreativa.vacunacion.entities.Amigo;
+import com.ucreativa.vacunacion.entities.BitacoraVacuna;
+import com.ucreativa.vacunacion.entities.Familiar;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Bryan br = new Bryan("Saludo, prueba herencia");
+        Familiar padre = new Familiar("Omar","302600510",58,true,"padre");
+        Amigo compaBrete = new Amigo("Danny","132456", 24,true,"compa","face.com");
 
-        Omar padre = new Omar("Hola soy el papa de Bryan jaja");
-        padre.setAge();
-        int edad = padre.getAge();
-        System.out.println("La edad de mi padre es: " + edad + " y su hobby es: " + padre.getHobby());
-
+        List<BitacoraVacuna> bitacora = new ArrayList<>();
+        bitacora.add(new BitacoraVacuna(padre,"Pfizer", new Date()));
+        bitacora.add(new BitacoraVacuna(compaBrete,"Astrazeneca", new Date()));
     }
 }
