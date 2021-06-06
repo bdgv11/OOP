@@ -6,21 +6,21 @@ import java.util.Date;
 public class BitacoraVacuna {
 
     private Persona persona;
-    private String marca;
     private Date fecha;
+    private Vacuna vacuna;
 
-    public BitacoraVacuna(Persona persona, String marca, Date fecha) {
+    public BitacoraVacuna(Persona persona,Date fecha, Vacuna vacuna) {
         this.persona = persona;
-        this.marca = marca;
         this.fecha = fecha;
+        this.vacuna = vacuna;
     }
 
     public Persona getPersona() {
         return persona;
     }
 
-    public String getMarca() {
-        return marca;
+    public Vacuna getVacuna(){
+        return vacuna;
     }
 
     public Date getFecha() {

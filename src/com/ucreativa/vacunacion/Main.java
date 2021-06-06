@@ -1,9 +1,6 @@
 package com.ucreativa.vacunacion;
 
-import com.ucreativa.vacunacion.entities.Amigo;
-import com.ucreativa.vacunacion.entities.BitacoraVacuna;
-import com.ucreativa.vacunacion.entities.Familiar;
-import com.ucreativa.vacunacion.entities.Persona;
+import com.ucreativa.vacunacion.entities.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,8 +13,9 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
 
-        String nombre, cedula, edad, riesgo, isAmigo, relacion, facebook, parentesco, marca;
+        String nombre, cedula, edad, riesgo, isAmigo, relacion, facebook, parentesco, empresaCreadora, nombreVacuna, cantidadDosis, eficacia, precioVacuna, relacionCovid;
         Persona persona;
+        Vacuna vacuna;
         List<BitacoraVacuna> bitacora = new ArrayList<>();
 
         boolean bandera = true;
@@ -33,13 +31,13 @@ public class Main {
             System.out.println("Cedula de la persona:");
             cedula = scan.nextLine();
 
-            System.out.println("Edad de la persona");
+            System.out.println("Edad de la persona:");
             edad = scan.nextLine();
 
-            System.out.println("Tiene riesgo? (S/N)");
+            System.out.println("Tiene riesgo? (S/N):");
             riesgo = scan.nextLine();
 
-            System.out.println("Amigo (A)/ Familiar(F)");
+            System.out.println("Amigo (A)/ Familiar(F):");
             isAmigo = scan.nextLine();
 
             if (isAmigo.equals("A")) {
@@ -50,16 +48,48 @@ public class Main {
 
                 persona = new Amigo(nombre, cedula, Integer.parseInt(edad), riesgo.equals("S"), relacion, facebook);
 
+                //Info entidad vacuna
+                System.out.println("Nombre de la empresa creadora:");
+                empresaCreadora = scan.nextLine();
+                System.out.println("Precio de la vacuna (unidad):");
+                precioVacuna = scan.nextLine();
+                System.out.println("Nombre de la vacuna:");
+                nombreVacuna = scan.nextLine();
+                System.out.println("Cantidad de vacunas necesarias para la persona:");
+                cantidadDosis = scan.nextLine();
+                System.out.println("Eficacia de la vacuna:");
+                eficacia = scan.nextLine();
+                System.out.println("Tiene relacion con el COVID-19? (S/N)");
+                relacionCovid = scan.nextLine();
+
+
+                vacuna = new Vacuna(empresaCreadora,Double.parseDouble(precioVacuna), nombreVacuna,Integer.parseInt(cantidadDosis),
+                        Integer.parseInt(eficacia), relacionCovid.equals("F"));
+
             } else {
                 System.out.println("Parentesco:");
                 parentesco = scan.nextLine();
 
                 persona = new Familiar(nombre, cedula, Integer.parseInt(edad), riesgo.equals("F"), parentesco);
-            }
-            System.out.println("Cual es la marca de la vacuna que le pusieron?");
-            marca = scan.nextLine();
 
-            bitacora.add(new BitacoraVacuna(persona, marca, new Date()));
+                //Info entidad vacuna
+                System.out.println("Nombre de la empresa creadora:");
+                empresaCreadora = scan.nextLine();
+                System.out.println("Precio de la vacuna (unidad):");
+                precioVacuna = scan.nextLine();
+                System.out.println("Nombre de la vacuna:");
+                nombreVacuna = scan.nextLine();
+                System.out.println("Cantidad de vacunas necesarias para la persona:");
+                cantidadDosis = scan.nextLine();
+                System.out.println("Eficacia de la vacuna:");
+                eficacia = scan.nextLine();
+                System.out.println("Tiene relacion con el COVID-19? (S/N)");
+                relacionCovid = scan.nextLine();
+
+                vacuna = new Vacuna(empresaCreadora,Double.parseDouble(precioVacuna), nombreVacuna,Integer.parseInt(cantidadDosis),
+                        Integer.parseInt(eficacia), relacionCovid.equals("F"));
+            }
+            bitacora.add(new BitacoraVacuna(persona, new Date(),vacuna));
 
             System.out.println("Desea imprimir la lista (S)");
             String print = scan.nextLine();
@@ -67,7 +97,10 @@ public class Main {
             if (print.equals("S")) {
 
                 for (BitacoraVacuna item : bitacora) {
-                    System.out.println(item.getPersona().getNombre() + " fue vacunado(a) el: " + item.getFecha());
+                    System.out.println(item.getPersona().getNombre() + " fue vacunado(a) el: " + item.getFecha()
+                            + " con la vacuna de la empresa: " + item.getVacuna().getEmpresaCreadora()
+                            + " y su nombre: " + item.getVacuna().getNombreVacuna()
+                            + " la cual tiene una eficacia de: " + item.getVacuna().getEficacia() + "%");
                 }
             }else{
                 System.out.println("Gracias por utilizar el sistema...");
