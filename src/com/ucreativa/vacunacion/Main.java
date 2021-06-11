@@ -1,9 +1,13 @@
 package com.ucreativa.vacunacion;
 
 import com.ucreativa.vacunacion.entities.Amigo;
+import com.ucreativa.vacunacion.entities.BitacoraVacuna;
 import com.ucreativa.vacunacion.entities.Familiar;
 import com.ucreativa.vacunacion.entities.Persona;
+import com.ucreativa.vacunacion.repositories.FileRepository;
 import com.ucreativa.vacunacion.repositories.InMemoryRepository;
+import com.ucreativa.vacunacion.repositories.Repository;
+import com.ucreativa.vacunacion.services.BitacoraService;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -16,7 +20,8 @@ public class Main {
 
         String nombre, cedula, edad, riesgo, isAmigo, relacion, facebook, parentesco, marca;
         Persona persona;
-        InMemoryRepository repo = new InMemoryRepository();
+        BitacoraService service = new BitacoraService(new Repository());
+        Repository repo = new FileRepository();
 
         boolean bandera = true;
         while (bandera) {
@@ -56,6 +61,9 @@ public class Main {
             }
             System.out.println("Cual es la marca de la vacuna que le pusieron?");
             marca = scan.nextLine();
+            service.save(nombre)
+
+
 
             repo.save(persona, marca, new Date());
 
@@ -64,7 +72,7 @@ public class Main {
 
             if (print.equals("S")) {
 
-                for (String item : repo.getList()) {
+                for ( String item : repo.get()) {
                     System.out.println(item);
                 }
             }else{
