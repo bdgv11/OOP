@@ -12,11 +12,20 @@ public class BitacoraService {
 
     private Repository repository;
 
-    public BitacoraService(String nombre, String cedula, String txtEdad,
-                           String txtRiesgo, String txtIsAmigo, String relacion,
-                           String facebook, String parentesco, String marca){
+    public BitacoraService(Repository repository){
+        this.repository = repository;
+    }
 
-        int edad = Integer.parseInt(txtEdad);
+    public void save(String nombre, String cedula, String txtEdad,
+                           String txtRiesgo, String txtIsAmigo, String relacion,
+                           String facebook, String parentesco, String marca) throws ErrorEnEdadException {
+        int edad;
+        try{
+            edad = Integer.parseInt(txtEdad);
+        }catch (NumberFormatException x){
+            throw  new ErrorEnEdadException(txtEdad);
+        }
+
         boolean isAmigo = txtIsAmigo.equals("A");
         boolean riesgo = txtRiesgo.equals("S");
         Persona persona;
